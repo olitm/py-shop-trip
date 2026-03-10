@@ -32,10 +32,10 @@ class Shop:
         for product, quantity in product_cart.items():
 
             price = self.products[product] * quantity
-            price_str = f"{price:g}"
+            price_str = f"{price:.2f}"
             print(f"{quantity} {product}s for {price_str} dollars")
 
-        print(f"Total cost is {total_cost:g} dollars")
+        print(f"Total cost is {total_cost:.2f} dollars")
         print("See you again!")
 
         return total_cost
