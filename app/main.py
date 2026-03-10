@@ -28,7 +28,8 @@ def shop_trip() -> None:
     ]
 
     for i, customer in enumerate(customers):
-        print(f"{customer.name} has {customer.money} dollars")
+        money_str = f"{customer.money:.2f}".rstrip("0").rstrip(".")
+        print(f"{customer.name} has {money_str} dollars")
 
         best_shop = None
         min_cost = float("inf")
