@@ -46,7 +46,7 @@ def shop_trip() -> None:
         if best_shop and customer.money >= min_cost:
             print(f"{customer.name} rides to {best_shop.name}\n")
 
-            customer.go_shopping(best_shop, fuel_price)
+            customer.go_shopping(best_shop, min_cost)
 
             print(f"\n{customer.name} rides home")
             print(f"{customer.name} now has {customer.money:.2f} dollars")

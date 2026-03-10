@@ -30,24 +30,10 @@ class Customer:
 
         products_cost = shop.get_products_cost(self.product_cart)
 
-        dist_home = math.sqrt(
-            (self.home_location[0] - shop.location[0]) ** 2
-            + (self.home_location[1] - shop.location[1]) ** 2
-        )
-        fuel_home = self.car.get_fuel_cost(dist_home, fuel_price)
+        return (fuel_to_shop * 2) + products_cost
 
-        return fuel_to_shop + products_cost + fuel_home
-
-    def go_shopping(self, shop: Shop, fuel_price: float) -> None:
-        dist_to_shop = self.get_distance_to(shop.location)
-        fuel_to_shop = self.car.get_fuel_cost(dist_to_shop, fuel_price)
-
+    def go_shopping(self, shop: Shop, trip_cost: float) -> None:
         self.location = shop.location
-
-        products_cost = shop.print_receipt(self.name, self.product_cart)
-
-        dist_home = self.get_distance_to(self.home_location)
-        fuel_home = self.car.get_fuel_cost(dist_home, fuel_price)
-
+        shop.print_receipt(self.name, self.product_cart)
         self.location = self.home_location
-        self.money -= (fuel_to_shop + products_cost + fuel_home)
+        self.money -= trip_cost
